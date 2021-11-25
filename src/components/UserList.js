@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import User from "./User";
-import { Modal, Button } from "react-bootstrap";
-import {connect} from "react-redux";
+//import { Modal, Button } from "react-bootstrap";
+import { connect } from "react-redux";
 
 function UserList(props) {
-
   return (
     <div>
-      {props.userData.map((user) => {
-  console.log(user);
+      {props.users.map((user) => {
+        //renders the User component for each user in the users array
         return (
           <User
             user={user}
@@ -21,10 +20,12 @@ function UserList(props) {
     </div>
   );
 }
-const mapstateToprops=(state)=>{
-  return{
-    userData: state.users
-  }
-}
 
-export default  connect(mapstateToprops)(UserList);
+const mapStateToProps = (state) => {
+  return {
+    users: state.users.users,
+  };
+};
+
+export default connect(mapStateToProps)(UserList);
+
